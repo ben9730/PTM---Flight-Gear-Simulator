@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0"
+      prefWidth="973.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="viewmodel.Controller">
+    <children>
+        <Pane layoutX="749.0" layoutY="14.0" opacity="0.95" prefHeight="179.0" prefWidth="200.0">
+            <children>
+                <Circle fx:id="bigCircle" layoutX="100.0" layoutY="79.0" opacity="0.61" radius="51.0" stroke="BLACK"
+                        strokeType="INSIDE"/>
+                <Circle fx:id="mSmallCircle" layoutX="100.0" layoutY="79.0" radius="20.0" stroke="#01010a"
+                        strokeType="INSIDE"/>
+                <Slider fx:id="mThrottle" disable="true" layoutX="10.0" layoutY="18.0" orientation="VERTICAL"
+                        prefHeight="127.0" prefWidth="15.0"/>
+                <Slider fx:id="mRudder" disable="true" layoutX="33.0" layoutY="137.0" prefHeight="15.0"
+                        prefWidth="143.0"/>
+            </children>
+        </Pane>
+        <Pane layoutX="-10.0" layoutY="452.0" prefHeight="95.0" prefWidth="143.0">
+            <children>
+                <Button fx:id="mSessingButton" layoutX="30.0" layoutY="14.0" mnemonicParsing="false"
+                        onAction="#onOpenSettingsClicked" text="Open Settings"/>
+                <Button layoutX="42.0" layoutY="48.0" mnemonicParsing="false" onAction="#onOpenCsvClicked"
+                        text="Opev Csv"/>
+            </children>
+        </Pane>
+        <ListView fx:id="mCsvColums" layoutX="26.0" layoutY="23.0" prefHeight="323.0" prefWidth="226.0"/>
+        <Pane layoutX="715.0" layoutY="176.0" prefHeight="209.0" prefWidth="234.0">
+            <children>
+                <Label layoutX="153.0" layoutY="37.0" text="Speed">
+                    <font>
+                        <Font size="9.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="69.0" layoutY="14.0" prefHeight="17.0" prefWidth="96.0" text="DASHBOARD"
+                       textAlignment="CENTER"/>
+                <Label fx:id="mSpeed" cacheShape="false" layoutX="51.0" layoutY="56.0" prefHeight="25.0"
+                       prefWidth="70.0" text="0"/>
+                <Label layoutX="52.0" layoutY="37.0" text="Altimater">
+                    <font>
+                        <Font size="9.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="mAltimeter" cacheShape="false" layoutX="153.0" layoutY="56.0" prefHeight="26.0"
+                       prefWidth="70.0" text="0"/>
+                <Label layoutX="7.0" layoutY="81.0" prefHeight="11.0" prefWidth="24.0" text="Roll">
+                    <font>
+                        <Font size="9.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="mRoll" cacheShape="false" layoutX="6.0" layoutY="92.0" prefHeight="25.0" prefWidth="49.0"
+                       text="0"/>
+                <Label layoutX="90.0" layoutY="81.0" text="Pitch">
+                    <font>
+                        <Font size="9.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="mPitch" cacheShape="false" layoutX="87.0" layoutY="92.0" prefHeight="25.0"
+                       prefWidth="61.0" text="0"/>
+                <Label layoutX="157.0" layoutY="81.0" text="Yaw">
+                    <font>
+                        <Font size="9.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="mYaw" cacheShape="false" layoutX="153.0" layoutY="92.0" prefHeight="26.0" prefWidth="70.0"
+                       text="0"/>
+            </children>
+        </Pane>
+        <Pane layoutX="146.0" layoutY="452.0" prefHeight="40.0" prefWidth="771.0">
+            <children>
+                <Label fx:id="mTime" layoutX="536.0" prefHeight="40.0" prefWidth="49.0" text="0:00"/>
+                <ImageView fx:id="mPlay" fitHeight="34.0" fitWidth="40.0" layoutX="339.0" layoutY="3.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/assets/play.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="mPause" fitHeight="34.0" fitWidth="40.0" layoutX="386.0" layoutY="3.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/assets/pause.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fx:id="mStop" fitHeight="34.0" fitWidth="40.0" layoutX="431.0" layoutY="3.0"
+                           pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/assets/stop.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="293.0" layoutY="3.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/assets/leftplay.png"/>
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="473.0" layoutY="3.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/assets/rightplay.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Slider fx:id="mPlayerSlider" layoutX="148.0" layoutY="519.0" prefHeight="15.0" prefWidth="790.0"/>
+        <LineChart fx:id="mColumnSelectedChart" layoutX="269.0" layoutY="19.0" prefHeight="209.0" prefWidth="234.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM" tickLabelsVisible="false" tickMarkVisible="false"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT"/>
+            </yAxis>
+        </LineChart>
+        <LineChart fx:id="mCorleatedChart" layoutX="487.0" layoutY="19.0" legendSide="TOP" legendVisible="false"
+                   prefHeight="209.0" prefWidth="226.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT"/>
+            </yAxis>
+        </LineChart>
+        <ChoiceBox fx:id="mDetectorList" layoutX="58.0" layoutY="360.0" prefWidth="150.0"/>
+        <Button fx:id="mAddDetectorButton" layoutX="61.0" layoutY="396.0" mnemonicParsing="false" prefHeight="26.0"
+                prefWidth="156.0" text="Add External Detector"/>
+        <Canvas fx:id="mCanvas" rotate="-90.0" height="200.0" layoutX="432.0" layoutY="238.0" width="200.0"/>
+    </children>
+</Pane>
