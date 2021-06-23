@@ -75,7 +75,8 @@ public class ModelContainer {
             zscoreDetector.detect(timeSeris);
             zscoreDetector.learnNormal(timeSeris);
             addDetector(zscoreDetector);
-            addDetector(new HybridDetector());
+            HybridDetector hybridDetector = new HybridDetector(timeSeris,zscoreDetector,simpleAnomalyDetector);
+            addDetector(hybridDetector);
         }).start();
 
     }

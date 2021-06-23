@@ -13,12 +13,19 @@ import java.util.List;
 public class HybridDetector implements TimeSeriesAnomalyDetector {
 
     public ArrayList<Circle> circles = new ArrayList<>();
-    public ArrayList<AnomalyReport> detections = new ArrayList<>();
+    private SimpleAnomalyDetector simpleAnomalyDetector;
+    private ZscoreDetector zscoreDetector;
+    private TimeSeries ts;
+    private static final float highCorelation = (float) 0.98;
+    private static final float lowCorelation = (float) 0.5;
 
-    public List<AnomalyReport> HybridAlgorithm(TimeSeries timeSeries1, TimeSeries timeSeries2) {
-        return detections;
+    public HybridDetector(TimeSeries timeSeris, ZscoreDetector zscoreDetector, SimpleAnomalyDetector simpleAnomalyDetector) {
+        this.ts = timeSeris;
+        this.zscoreDetector = zscoreDetector;
+        this.simpleAnomalyDetector = simpleAnomalyDetector;
 
     }
+
 
     @Override
     public void learnNormal(TimeSeries timeSeries) {
@@ -32,7 +39,14 @@ public class HybridDetector implements TimeSeriesAnomalyDetector {
 
     @Override
     public Runnable draw(Canvas canvas, CorrelatedFeatures correlatedFeatures, int timeStamp) {
-        return null;
+        if (correlatedFeatures.corrlation > highCorelation) {
+            return simpleAnomalyDetector.draw(canvas, correlatedFeatures, timeStamp);
+        } else if (correlatedFeatures.corrlation < lowCorelation) {
+            return simpleAnomalyDetector.draw(canvas, correlatedFeatures, timeStamp);
+        }
+        return () -> {
+
+        };
     }
 
 }
